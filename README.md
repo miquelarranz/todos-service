@@ -35,5 +35,3 @@ It uses the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0
 * Add a users package/module with authentication, so we can have todos related to users.
 * Add a Kubernetes layer to the project.
 * ...
-
-## License
