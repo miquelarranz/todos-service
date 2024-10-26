@@ -1,0 +1,5 @@
+services:
+  todos-service:
+    image: "miquelarranz/todos-service"
+    ports:
+      - "1234:8080"
