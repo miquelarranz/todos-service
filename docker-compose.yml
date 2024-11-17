@@ -7,7 +7,7 @@ services:
     image: postgres:17
     restart: always
     environment:
-      DATABASE_URL: "host=todos-db user=postgres password=postgres dbname=todos sslmode=disable"
+      DATABASE_URL: "host=localhost user=postgres password=postgres dbname=todos sslmode=disable"
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"

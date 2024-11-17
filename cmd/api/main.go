@@ -5,18 +5,23 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/miquelarranz/todos-service/internal/handlers"
 	"github.com/miquelarranz/todos-service/internal/persistence"
-
 	"os"
 )
 
-func main() {
-	router := gin.Default()
-
+func initDatabase() *sql.DB {
 	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 
 	if err == nil {
 		panic(err)
 	}
+
+	return db
+}
+
+func main() {
+	router := gin.Default()
+
+	db := initDatabase()
 
 	todoStore := persistence.NewTodoStore(db)
 	todoHandler := handlers.NewTodoHandler(todoStore)

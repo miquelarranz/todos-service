@@ -33,15 +33,28 @@ And the API can be accessed through `localhost:1234`.
 
 ## Contributing
 
-The repository doesn't accept contributions so far.
+This repository uses the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
 
-It uses the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
+### Migrations
+
+The repository uses Goose to manage DB migrations. To run the DB migrations you need to have the db docker 
+container running and run:
+
+```sh
+source .env && goose up
+```
+
+Temporary, the environment variables needed for Goose are defined in the `.env` file and the process is manual. I will
+change it when working on productizing this repository.
 
 ## Next steps
 
-* Expand the service with a Postgres DB so it returns real data.
+I will list here the progressive improvements I'm doing to the repository and future steps to explore.
+
+* ~~Migrations for the DB.~~ ✅
+* Expand the service with a Postgres DB so it returns real data. 🏗️
 * Live-reload for the Go service with Docker.
-* Migrations for the DB.
+* Add tests
 * Configure GHA to build and push the image to a registry.
 * Add a users package/module with authentication, so we can have todos related to users.
 * Add a Kubernetes layer to the project.
