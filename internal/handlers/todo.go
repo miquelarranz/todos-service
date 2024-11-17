@@ -19,11 +19,10 @@ func NewTodoHandler(todoStore *persistence.TodoStore) *TodoHandler {
 }
 
 func (th *TodoHandler) GetTodos(c *gin.Context) {
-	todos := models.Todos
-	//todos, err := th.todoStore.FetchTodos(c)
-	//if err != nil {
-	//	c.IndentedJSON(http.StatusInternalServerError, models.Error{Message: "To-dos not found"})
-	//}
+	todos, err := th.todoStore.FetchTodos(c)
+	if err != nil {
+		c.IndentedJSON(http.StatusInternalServerError, models.Error{Message: "To-dos not found"})
+	}
 
 	c.IndentedJSON(http.StatusOK, todos)
 }

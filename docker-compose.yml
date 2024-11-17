@@ -1,13 +1,16 @@
 services:
   todos-service:
     image: "miquelarranz/todos-service"
+    environment:
+      DATABASE_URL: "host=todos-db user=postgres password=postgres dbname=postgres sslmode=disable"
     ports:
       - "1234:8080"
+    depends_on:
+      - todos-db
   todos-db:
     image: postgres:17
     restart: always
     environment:
-      DATABASE_URL: "host=localhost user=postgres password=postgres dbname=todos sslmode=disable"
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
