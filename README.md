@@ -9,15 +9,17 @@ Service written in Go and dockerized. This is part of my learning path to improv
 The repository uses docker to run the Go service. The process is manual right now, so you have to build the image and run it with docker-compose:
 
 ```
-docker compose -f docker-compose.yml up
+docker compose up
 ```
 
-Or you can build and run the container manually:
+If you do changes on the Go service, you will need to manually re-build the image. Right now, there's nothing implemented to
+speed up this process, but it's on the backlog. You will need to run:
 
 ```
-docker build -t <your-namespace>/todos-service .
-docker run -d -p 1234:8080 --name=todos-service <your-namespace>/todos-service
+docker build -no-cache -t miquelarranz/todos-service .
 ```
+
+The `-no-cache` flag is needed, otherwise Docker will get the Go build from the cache.
 
 And the API can be accessed through `localhost:1234`.
 
@@ -38,6 +40,8 @@ It uses the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0
 ## Next steps
 
 * Expand the service with a Postgres DB so it returns real data.
+* Live-reload for the Go service with Docker.
+* Migrations for the DB.
 * Configure GHA to build and push the image to a registry.
 * Add a users package/module with authentication, so we can have todos related to users.
 * Add a Kubernetes layer to the project.

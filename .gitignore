@@ -1,2 +1,9 @@
-# Vscode folder
+# IDE
 .vscode/
+.idea
+
+# Docker
+pgdata
+
+# Go build
+/cmd/api/api
